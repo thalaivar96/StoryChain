@@ -122,7 +122,8 @@
   </style>
 </head>
 <body>
-
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
   <!-- Header -->
   <header>
     <h1>StoryChain</h1>
@@ -179,5 +180,23 @@
     window.onload = loadStories;
   </script>
 
+  <div class="bottom-nav">
+  <div class="nav-item active" onclick="window.location.href='homepage.html'">
+    <i data-lucide="layout-dashboard"></i>
+    <p>Base</p>
+  </div>
+  <div class="nav-item" onclick="window.location.href='favorites.html'">
+    <i data-lucide="book-heart"></i>
+    <p>Favorites</p>
+  </div>
+  <div class="nav-item" onclick="window.location.href='leaderboard.html'">
+    <i data-lucide="trophy"></i>
+    <p>Leaderboard</p>
+  </div>
+  <div class="nav-item" onclick="window.location.href='profile.html'">
+    <i data-lucide="user-round"></i>
+    <p>Profile</p>
+  </div>
+</div>
 </body>
 </html>
