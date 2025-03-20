@@ -6,11 +6,11 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet" />
   <title>StoryChain - Home</title>
-  
+
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
-  
+
   <style>
     /* Header with logout */
     header {
@@ -106,6 +106,45 @@
       background-color: #388e3c;
     }
 
+    /* Bottom Nav Bar Styles */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #333;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10px 0;
+      z-index: 100;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: white;
+      cursor: pointer;
+      font-size: 12px;
+      transition: color 0.3s;
+    }
+
+    .nav-item:hover {
+      color: #4caf50;
+    }
+
+    .nav-item.active {
+      color: #4caf50;
+      border-top: 2px solid #4caf50;
+    }
+
+    .nav-item i {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 5px;
+      stroke-width: 2;
+    }
+
     @media (min-width: 768px) {
       header h1 {
         font-size: 24px;
@@ -122,11 +161,7 @@
   </style>
 </head>
 <body>
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script>
-    lucide.createIcons();
-  </script>
-  
+
   <!-- Header -->
   <header>
     <h1>StoryChain</h1>
@@ -140,6 +175,26 @@
 
   <!-- Floating Action Button -->
   <div class="fab" onclick="window.location.href='createstory.html'">+</div>
+
+  <!-- Bottom Nav -->
+  <div class="bottom-nav">
+    <div class="nav-item active" onclick="window.location.href='homepage.html'">
+      <i data-lucide="layout-dashboard"></i>
+      <p>Base</p>
+    </div>
+    <div class="nav-item" onclick="window.location.href='favorites.html'">
+      <i data-lucide="book-heart"></i>
+      <p>Favorites</p>
+    </div>
+    <div class="nav-item" onclick="window.location.href='leaderboard.html'">
+      <i data-lucide="trophy"></i>
+      <p>Leaderboard</p>
+    </div>
+    <div class="nav-item" onclick="window.location.href='profile.html'">
+      <i data-lucide="user-round"></i>
+      <p>Profile</p>
+    </div>
+  </div>
 
   <!-- Firebase & JS -->
   <script>
@@ -183,23 +238,11 @@
     window.onload = loadStories;
   </script>
 
-  <div class="bottom-nav">
-  <div class="nav-item active" onclick="window.location.href='homepage.html'">
-    <i data-lucide="layout-dashboard"></i>
-    <p>Base</p>
-  </div>
-  <div class="nav-item" onclick="window.location.href='favorites.html'">
-    <i data-lucide="book-heart"></i>
-    <p>Favorites</p>
-  </div>
-  <div class="nav-item" onclick="window.location.href='leaderboard.html'">
-    <i data-lucide="trophy"></i>
-    <p>Leaderboard</p>
-  </div>
-  <div class="nav-item" onclick="window.location.href='profile.html'">
-    <i data-lucide="user-round"></i>
-    <p>Profile</p>
-  </div>
-</div>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+
 </body>
 </html>
