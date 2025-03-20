@@ -8,20 +8,79 @@
   <title>StoryChain - Home</title>
   <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
+  <script src="https://unpkg.com/lucide-static/icons/plus.svg" defer></script> <!-- For Plus Icon -->
+  <style>
+    /* Floating Plus Button */
+    .fab {
+      position: fixed;
+      bottom: 5%;
+      right: 5%;
+      background-color: #4caf50;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 36px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: 0.3s;
+      z-index: 200;
+    }
+
+    .fab:hover {
+      background-color: #388e3c;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 3% 5%;
+      background: #333;
+      color: white;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      font-size: 5vw;
+    }
+
+    header button {
+      padding: 8px 16px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    header button:hover {
+      background-color: #388e3c;
+    }
+
+  </style>
 </head>
 <body>
 
   <header>
     <h1>StoryChain</h1>
+    <button onclick="logoutUser()">Logout</button>
   </header>
 
   <div class="container">
-    <button onclick="window.location.href='createstory.html'">Create New Story</button>
-    <button onclick="logoutUser()">Logout</button>
-
     <h2>Existing Stories</h2>
     <ul id="storyList"></ul>
   </div>
+
+  <!-- Floating Button -->
+  <div class="fab" onclick="window.location.href='createstory.html'">+</div>
 
   <script>
     const firebaseConfig = {
