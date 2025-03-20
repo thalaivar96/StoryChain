@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet" />
+  <title>StoryChain - Home</title>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
+</head>
+<body>
+
+  <header>
+    <h1>StoryChain</h1>
+  </header>
+
+  <div class="container">
+    <button onclick="window.location.href='createstory.html'">Create New Story</button>
+    <button onclick="logoutUser()">Logout</button>
+
+    <h2>Existing Stories</h2>
+    <ul id="storyList"></ul>
+  </div>
+
+  <footer>
+    &copy; 2025 StoryChain. All rights reserved.
+  </footer>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDupIEsId9qew2VayiDnIMsG2Ou2kAz8zo",
+      authDomain: "storychain96.firebaseapp.com",
+      databaseURL: "https://storychain96-default-rtdb.asia-southeast1.firebasedatabase.app/",
+      projectId: "storychain96",
+      storageBucket: "storychain96.appspot.com",
+      messagingSenderId: "658725229361",
+      appId: "1:658725229361:web:1655d4c91a31471ec41610",
+      measurementId: "G-1HQ79XF13E"
+    };
+
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    function loadStories() {
+      db.ref("Stories").once('value', (snapshot) => {
+        const storyList = document.getElementById('storyList');
+        storyList.innerHTML = "";
+        snapshot.forEach((childSnapshot) => {
+          const storyID = childSnapshot.key;
+          const storyData = childSnapshot.val();
+          const li = document.createElement('li');
+          li.textContent = `${storyData.title} (ID: ${storyID})`;
+          storyList.appendChild(li);
+        });
+      });
+    }
+
+    function logoutUser() {
+      localStorage.removeItem("username");
+      window.location.href = "index.html";
+    }
+
+    window.onload = loadStories;
+  </script>
+
+</body>
+</html>
